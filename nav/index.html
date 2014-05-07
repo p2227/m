@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1">
+    <title>HTML5 CSS3 部分新特性介绍</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+            margin:0;padding:0;
+        }
+        html{
+            font: 100% "Microsoft YaHei","Hiragino Sans GB",\5FAE\8F6F\96C5\9ED1,tahoma,arial,simsun,\5B8B\4F53;
+        }
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+            display: block
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:visited,a:link {
+            color:#000000;
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            text-align: center;
+        }
+
+        h2,h3,h4,h5,h6 {
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        p {
+            text-indent: 2em;
+        }
+
+        header {
+            padding: 15px 0;
+            background-color: #0e987e;
+        }
+
+        header h1{
+            font-size: 20px;
+            color:white;
+        }
+
+        nav {
+            margin: 10px 0 30px;
+        }
+
+        nav ul {
+            border: 1px solid #5bb793;
+            border-radius: 3px;
+            list-style: none;
+            margin: 0 5px;
+            overflow: hidden;
+        }
+
+        #total-nav li {
+            float:left;
+            border-left:1px solid #000000;
+            margin-left: -1px;
+        }
+
+
+        #total-nav a{
+            line-height: 30px;
+            margin:0 10px;
+        }
+
+        .clearfix{
+            zoom:1;
+        }
+
+        .clearfix:after{
+            display:block;
+            content:" ";
+            clear:both;
+            visibility: hidden;
+        }
+
+        .intro-one {
+            border: 1px solid #5bb793;
+            margin: 2px;
+            padding: 0 8px 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .intro-one h3 {
+            margin: 0 -8px;
+            padding: 8px;
+            background-color: #0e987e;
+        }
+
+        .intro-one p {
+            margin: 8px;
+        }
+
+        footer {
+            margin:20px;
+        }
+
+        .foot2top{
+            position: fixed;
+            bottom: 1px;
+            right:3px;
+        }
+        
+        @media screen and (min-width: 800px)  {
+            #wrap {
+                width:940px;
+                margin:0 auto;
+            }
+
+
+            .intro-one {
+                float: left;
+                width:211px;
+                height:210px;
+            }
+
+            footer {
+                position: relative;
+                left:100px;
+            }
+
+            .foot2top{
+                right:130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><h1>HTML5 CSS3 部分新特性介绍</h1></header>
+    <div id="wrap">
+        <nav id="total-nav">
+            <ul class="clearfix">
+                <li><a href="#html5-intro">HTML5</a></li>
+                <li><a href="#css3-intro">CSS3</a></li>
+            </ul>
+        </nav>
+        <article>
+            <section id="html5-intro">
+                <div class="html5-intro-title intro-title"><h2>HTML5 实用功能</h2></div>
+                <div class="html5-intro-body intro-body clearfix">
+                    <div class="intro-one">
+                        <h3>语义化</h3>
+                        <p>语义化是HTML作为web<strong>结构</strong>的重要因素。HTML5对于语义化的增强，很大程度是为移动设备而准备的。语义化的HTML页面能够在差异较大的移动设备上得到较好的兼容性期望，特别是在移动设备迅速发现的时代，要想让自己的页面在目前以及将来一段时间的移动设备上都有较好的兼容性，良好的语义化HTML是基础</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>表单元素增强</h3>
+                        <p>在HTML5中表单元素的得到了很大的增强，原生HTML逐渐能取代以前富组件的JS UI 库了。对于移动设备，更加重要的是对于输入的人性化</p>
+                    </div>
+                </div>
+            </section>
+            <section id="css3-intro">
+                <div class="css3-intro-title intro-title"><h2>CSS3 实用功能</h2></div>
+                <div class="css3-intro-body intro-body clearfix">
+                    <div class="intro-one">
+                        <h3>选择器</h3>
+                        <p>对于语义化的增强是</p>
+                    </div>
+                    <div class="intro-one">
+                        <h3>媒体询问</h3>
+                        <p>对于语义化的增强是</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <footer>
+            writen by p2227
+            <span class="foot2top">↑回到顶部</span>
+        </footer>
+    </div>
+</body>
+</html>

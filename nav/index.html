@@ -43,6 +43,11 @@
             text-indent: 2em;
         }
 
+		#wrap {
+				310px;
+				margin: 0 auto;
+			}
+
         header {
             padding: 15px 0;
             background-color: #0e987e;
@@ -116,11 +121,15 @@
             right:3px;
         }
         
-        @media screen and (min-width: 800px)  {
+        @media only screen and (min-width: 950px)  {
             #wrap {
                 width:940px;
                 margin:0 auto;
             }
+
+			article {
+				width: auto;
+			}
 
 
             .intro-one {
@@ -138,6 +147,43 @@
                 right:130px;
             }
         }
+
+
+		@media only screen and (min-width: 600px) and (max-width: 950px) {
+			article {
+				width: 600px;
+				margin: 0 auto;
+			}
+
+			.intro-one {
+                float: left;
+                width: 278px;
+                height: 210px;
+            }
+
+		}
+
+		@media only screen and (max-width: 600px) {
+			#wrap {
+				width:310px;
+				margin:0 auto;
+			}
+
+			article {
+				width: auto;
+			}
+		}
+
+		@media only screen and (max-width: 310px) {
+			#wrap {
+				width:310px;
+				margin:0 auto;
+			}
+
+			article {
+				width: auto;
+			}
+		}
     </style>
 </head>
 <body>

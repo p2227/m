@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width" name="viewport">
+	</head>
+	<style>
+		.iptHeight,.spnHeight{
+			width:300px;
+			height: 30px;
+			line-height: 30px;
+			background: white;
+			border-radius: 4px;
+			border: 1px solid #000;
+		}	
+		
+		.spnHeight{
+			display: inline-block;
+		}
+		
+		.spnHeight>input{
+			border:none;
+			width:298px;
+		}
+	</style>
+	<body>
+		<form>
+			<p>
+				<input type="tel" placeholder="我比较高，在某些设备上文字就不居中" class="iptHeight"/>
+			</p>
+			<p>
+				<span class="spnHeight">
+					<input type="url" placeholder="我外围是一个高30px的元素，我在元素内居中"/>
+				</span>
+			</p>
+		</form>
+	</body>
+</html>

@@ -14,7 +14,7 @@
     <div class="p27-blank"><!--应该用伪元素更加符合语义，但为兼容，所以没这么做--></div>
     <div class="p27-bg"></div>
     <div class="p27-main">
-        <ol class="p27-loan-list">
+        <ol id="p27-loan-list" class="p27-loan-list">
             <li><span class="p27-list-num">1</span><span class="p27-list-text">房屋贷</span><span class="p27-list-arrow"></span></li>
             <li><span class="p27-list-num">2</span><span class="p27-list-text">车辆贷</span><span class="p27-list-arrow"></span></li>
             <li><span class="p27-list-num">3</span><span class="p27-list-text">信用贷</span><span class="p27-list-arrow"></span></li>
@@ -28,6 +28,15 @@
 </div>
 </body>
 <script>
-
+    var list = document.getElementById("p27-loan-list");
+    list.addEventListener("touchstart",function(e){
+        var target = e.target || e.which;
+        if(/^li$/i.test(target.tagName)){
+            target.classList.add("p27-li-active");
+            setTimeout(function(){
+                target.classList.remove("p27-li-active");
+            },200)
+        }
+    },false)
 </script>
 </html>

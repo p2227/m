@@ -43,8 +43,8 @@ html,body{ height:100%;-webkit-font-smoothing: antialiased;}
     position: relative;
 }
 
-.p27-loan-list > li:active{
-    background: #e9eae9;
+.p27-li-active{
+    background: #e9eae9 !important;
 }
 
 .p27-list-num {

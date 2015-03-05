@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dom时针</title>
+    <link rel="stylesheet" href="../common/style.css"/>
+    <style>
 
+        .clock{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto;
+            border: 5px solid #aabbcc;
+            border-radius: 105px;
+        }
+
+        .clock-num{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -5px;
+            width: 10px;
+            height: 20px;
+            text-align: center;
+        }
+
+        .clock-center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -3px;
+            margin-left: -3px;
+            width: 6px;
+            height: 6px;
+            background: black;
+            border-radius: 3px;
+        }
+
+        .clock-line{
+            position: absolute;
+            border: 1px solid black;
+            top: 50%;
+            left: 50%;
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+        }
+
+        .clock-line-hour{
+            width: 60px;
+            border: 2px solid black;
+            margin-top: -2px;
+            -webkit-transform: rotate(45deg);
+        }
+
+        .clock-line-minute{
+            width: 65px;
+            margin-top: -1px;
+            -webkit-transform: rotate(90deg);
+        }
+
+        .clock-line-second{
+            width: 70px;
+            border: 1px solid red;
+            margin-top: -1px;
+            -webkit-transform: rotate(170deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock">
+        <span class="clock-center"></span>
+        <span class="clock-line clock-line-hour"></span>
+        <span class="clock-line clock-line-minute"></span>
+        <span class="clock-line clock-line-second"></span>
+    </div>
+</body>
+<script>
+    var clock = document.getElementById("clock");
+    var clockNum = document.createElement("span");
+        clockNum.setAttribute("class","clock-num");
+    var l = 85, //内边距的最大长度
+        ang2rad =  0.017453293;//角度与弧度的转换
+    var angelArr = [90,60,30,0,-30,-60,-90,-120,-150,180,150,120];//各时钟的角度
+    for(var i=0;i<=11;i++){
+        !function(i){
+            var n = clockNum.cloneNode();
+            n.innerHTML = i === 0 ? 12 : i;
+            var styleStr = "translate3d(" + Math.round(l*Math.cos(angelArr[i]*ang2rad)) + "px," + -1*Math.round(l*Math.sin(angelArr[i]*ang2rad)) + "px,0)";
+            n.style.webkitTransform = styleStr;
+            n.style.transform = styleStr;
+            clock.appendChild(n);
+        }(i)
+    }
+</script>
+</html>

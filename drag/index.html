@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>拖放</title>
+    <link rel="stylesheet" href="../common/style.css"/>
+    <style>
+        .touch-wrap{
+            left:20px;
+            top:35px;
+            width: 360px;
+            height:600px;
+            background:rgba(220,220,220,1);
+            position: relative;
+        }
+
+        .touch-drag{
+            width: 60px;
+            height: 60px;
+            background-color: rgba(180,180,180,1);
+            border-radius: 60px;
+            position: absolute;
+            top:0;
+            left:0;
+
+        }
+    </style>
+</head>
+<body>
+<div class="touch-wrap" id="touch-wrap">
+    <hr>
+    <hr>
+    <hr>
+    <hr style="height: 50px">
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <div class="touch-drag" id="touch-drag"></div>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+</div>
+<script>
+    /**
+     * 移动端touch移动控件范例，布局条件：一个有定位的父元素，一个绝对定位的子元素（相对于父元素是top:0,left:0)
+     * 事件要绑定在document上，然后在touchstart的时候阻止默认事件 e.preventDefault() 否则 touchmove 只执行一次
+     * 或者在其他地方加上 document.addEventListener("touchstart",function(e){ e.preventDefault(); });
+     */
+    //document.addEventListener("touchstart",function(e){ e.preventDefault(); });
+    var tdObj = {
+        bx: 0,
+        by: 0,
+        mx: 0,
+        my: 0,
+        tx: 0,
+        ty: 0,
+        dom:document.getElementById("touch-drag"),
+        wrap:document.getElementById("touch-wrap"),
+        startFn : function(e){
+//            console.log("%s:bx:%s,by:%s,mx:%s,my:%s,tx:%s,ty:%s", e.type,tdObj.bx,tdObj.by,tdObj.mx,tdObj.my,tdObj.tx,tdObj.ty);
+//            console.log("%s:pageX:%s,pageY:%s,event:%o", e.type,e.changedTouches[0].pageX,e.changedTouches[0].pageY,e);
+            if(e.target.classList.contains("touch-drag")){
+                e.preventDefault();
+                //触摸开始时候要记录的东西 e.changedTouches[0].pageX 触摸的点位置，this.dom.offsetLeft移动的元素一开始的定位偏移，this.mx 实际上是想拿 translate3d 上的值，直接操作dom耗能。
+                this.bx = e.changedTouches[0].pageX - this.dom.offsetLeft - this.mx;
+                this.by = e.changedTouches[0].pageY - this.dom.offsetTop - this.my;
+            }
+        },
+        moveFn : function(e){
+//            console.log("bx:%s,by:%s,mx:%s,my:%s,tx:%s,ty:%s",tdObj.bx,tdObj.by,tdObj.mx,tdObj.my,tdObj.tx,tdObj.ty);
+//            console.log("%s:pageX:%s,pageY:%s,event:%o", e.type,e.changedTouches[0].pageX,e.changedTouches[0].pageY,e);
+            if(e.target.classList.contains("touch-drag")) {
+                //e.changedTouches[0].pageX 是一个绝对的位置，所以要减去一开始的偏移
+                this.mx = e.changedTouches[0].pageX - this.bx;
+                this.my = e.changedTouches[0].pageY - this.by;
+                this.mx = this.mx < this.trXMin ? this.trXMin : this.mx > this.trXMax ? this.trXMax : this.mx;
+                this.my = this.my < this.trYMin ? this.trYMin : this.my > this.trYMax ? this.trYMax : this.my;
+                this.dom.style.transform = "translate3d(" + (this.mx) + "px," + (this.my) + "px,0)";
+            }
+        },
+        endFn : function(e){
+//            console.log("bx:%s,by:%s,mx:%s,my:%s,tx:%s,ty:%s",tdObj.bx,tdObj.by,tdObj.mx,tdObj.my,tdObj.tx,tdObj.ty);
+//            console.log("%s:pageX:%s,pageY:%s,event:%o", e.type,e.changedTouches[0].pageX,e.changedTouches[0].pageY,e);
+            if(e.target.classList.contains("touch-drag")) {
+                this.tx += e.changedTouches[0].pageX - this.bx;
+                this.ty += e.changedTouches[0].pageY - this.by;
+            }
+        },
+        init:function(){
+            var td = this.dom;
+            this.domRect = td.getBoundingClientRect();
+            this.wrapRect = this.wrap.getBoundingClientRect() ;
+            this.trXMin = 0; //移动的最小值；符合布局条件，这里就是0【布局条件：一个有定位的父元素，一个绝对定位的子元素（相对于父元素是top:0,left:0)】
+            this.trYMin = 0; //
+            this.trXMax = this.wrapRect.right - this.domRect.width - this.wrap.offsetLeft;//移动的最大值；
+            this.trYMax = this.wrapRect.bottom - this.domRect.height - this.wrap.offsetTop;
+            document.addEventListener("touchstart",this.startFn.bind(this),false);
+            document.addEventListener("touchmove",this.moveFn.bind(this),false);
+            //document.addEventListener("touchend",this.endFn.bind(this),true);
+        }
+    };
+
+    tdObj.init.call(tdObj);
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+</head>
+<body>
+<div id="c">点击我</div>
+<input type="button" value="开始" id="start"/>
+<input type="button" value="结束" id="end"/>
+    <script>
+        var c = document.getElementById("c");
+        console.log(navigator.onLine);
+
+        window.addEventListener('online',function(){
+            c.innerHTML = ("online:" + navigator.onLine);
+        });
+        window.addEventListener('offline',function(){
+            c.innerHTML = ("offline" + navigator.onLine);
+        });
+
+        document.addEventListener("click",function(e){
+            if(e.target.id === "c"){
+                navigator.vibrate([1000,2000]);
+            }
+            if(e.target.id === "start"){
+                window.addEventListener("deviceorientation", hdl);
+            }
+            if(e.target.id === "end"){
+                window.removeEventListener("deviceorientation",hdl);
+            }
+        });
+
+        var hdl = function(e){
+            console.log("%o",e);
+        };
+
+
+    </script>
+</body>
+</html>
